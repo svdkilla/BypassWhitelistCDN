@@ -143,31 +143,42 @@ VPN создаёт зашифрованный туннель между клие
 ### 5.3 Настройка Xray (Inbound)
 
 ```
-{
-  "tag": "Мобильный обход",
-  "port": 80,
-  "listen": "0.0.0.0",
-  "protocol": "vless",
-  "settings": {
-    "clients": [],
-    "decryption": "none"
-  },
-  "sniffing": {
-    "enabled": false
-  },
-  "streamSettings": {
-    "network": "xhttp",
-    "security": "none",
-    "xhttpSettings": {
-      "mode": "packet-up",
-      "path": "/",
-      "xPaddingBytes": "100-1000",
-      "scMaxBufferedPosts": 30,
-      "scMaxEachPostBytes": "1000000",
-      "scStreamUpServerSecs": "20-80"
+	{
+      "tag": "Мобильный обход ",
+      "port": 80,
+      "listen": "0.0.0.0",
+      "protocol": "vless",
+      "settings": {
+        "clients": [],
+        "decryption": "none"
+      },
+      "sniffing": {
+        "enabled": false,
+        "routeOnly": false,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic",
+          "fakedns"
+        ],
+        "metadataOnly": false
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "none",
+        "xhttpSettings": {
+          "host": "",
+          "mode": "packet-up",
+          "path": "/",
+          "headers": {},
+          "noSSEHeader": false,
+          "xPaddingBytes": "100-1000",
+          "scMaxBufferedPosts": 30,
+          "scMaxEachPostBytes": "1000000",
+          "scStreamUpServerSecs": "20-80"
+        }
+      }
     }
-  }
-}
 ```
 
 (Комментарии:  
